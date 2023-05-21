@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException, Body
 from sqlalchemy.orm import Session
-from exceptions import PessoaException
+from exceptions import PessoaException, ReservaException
 from database import get_db, engine
 import crud, models, schemas
 
@@ -27,7 +27,7 @@ def getAllFuncionarios(db: Session = Depends(get_db), offset:int = 0, limit: int
 
 
 #create
-@app.post("/api/funcionarios/signIn", response_model=schemas.Funcionario)
+@app.post("/api/funcionarios", response_model=schemas.Funcionario)
 def createFuncionario(funcionario: schemas.funcionarioCreate, db: Session = Depends(get_db)):
     try:
         return crud.createFuncionario(db, funcionario)
@@ -36,7 +36,7 @@ def createFuncionario(funcionario: schemas.funcionarioCreate, db: Session = Depe
     
     
 #update
-@app.put("/api/funcionarios/{funcionarioId}/update", response_model=schemas.Funcionario)
+@app.put("/api/funcionarios/{funcionarioId}", response_model=schemas.Funcionario)
 def updateFuncionario(funcionarioId: int, funcionario: schemas.funcionarioCreate, db: Session = Depends(get_db)):
     try: 
         return crud.updateFuncionario(db, funcionarioId, funcionario)
@@ -45,7 +45,7 @@ def updateFuncionario(funcionarioId: int, funcionario: schemas.funcionarioCreate
     
     
 #delete
-@app.delete("/api/funcionarios{funcionarioId}/delete")
+@app.delete("/api/funcionarios/{funcionarioId}")
 def deleteFuncionarioById(funcionarioId: int, db: Session = Depends(get_db)):
     try:
         return crud.deleteFuncionarioById(db, funcionarioId)
@@ -54,3 +54,87 @@ def deleteFuncionarioById(funcionarioId: int, db: Session = Depends(get_db)):
     
     
 #o crud de hóspede é exatamente igual ao de funcionario, irei(joao) fazer no domingo, ai tenho que mexer no crud.py e main.py pra fazer o hospede
+
+#endpoint de hospede
+#read
+@app.get("/api/hospedes/{hospedeId}", response_model=schemas.Hospede)
+def getHospedeById(hospedeId: int, db: Session = Depends(get_db)):
+    try:
+        return crud.getHospedeById(db, hospedeId)
+    except PessoaException as cie:
+        raise HTTPException(**cie.__dict__)
+    
+
+@app.get("/api/hospedes", response_model=schemas.paginatedHospede)
+def getAllHospedes(db: Session = Depends(get_db), offset:int = 0, limit: int = 10):
+    dbHospede = crud.getAllHospedes(db, offset, limit)
+    response = {"limit": limit, "offset": offset, "data": dbHospede}
+    return response
+#fim do read
+
+#create
+@app.post("/api/hospedes", response_model=schemas.Hospede)
+def createHospede(hospede: schemas.hospedeCreate, db: Session = Depends(get_db)):
+    try:
+        return crud.createHospede(db, hospede)
+    except PessoaException as cie:
+        raise HTTPException(**cie.__dict__)
+
+#update
+@app.put("/api/hospedes/{hospedeId}", response_model=schemas.Hospede)
+def updateHospede(hospedeId: int, hospede: schemas.hospedeCreate, db: Session = Depends(get_db)):
+    try: 
+        return crud.updateHospede(db, hospedeId, hospede)
+    except PessoaException as cie:
+        raise HTTPException(**cie.__dict__)
+    
+#delete
+@app.delete("/api/hospedes/{hospedeId}")
+def deleteHospedeById(hospedeId: int, db: Session = Depends(get_db)):
+    try:
+        return crud.deleteHospedeById(db, hospedeId)
+    except PessoaException as cie:
+        raise HTTPException(**cie.__dict__)
+    
+    
+#endpoint de reserva
+#read
+@app.get("/api/reservas/{reservaId}", response_model=schemas.Reserva)
+def getReservaById(reservaId: int, db: Session = Depends(get_db)):
+    try:
+        return crud.getReservaById(db, reservaId)
+    except ReservaException as cie:
+        raise HTTPException(**cie.__dict__)
+    
+
+@app.get("/api/reservas", response_model=schemas.PaginatedReserva)
+def getAllReservas(db: Session = Depends(get_db), offset:int = 0, limit: int = 10):
+    dbReservas = crud.getAllReservas(db, offset, limit)
+    response = {"limit": limit, "offset": offset, "data": dbReservas}
+    return response
+#fim do read
+
+#create
+@app.post("/api/reservas", response_model=schemas.Reserva)
+def createReserva(reserva: schemas.reservaCreate, db: Session = Depends(get_db)):
+    try:
+        return crud.createReserva(db, reserva)
+    except ReservaException as cie:
+        raise HTTPException(**cie.__dict__)
+   
+   
+#update
+@app.put("/api/reservas/{reservaId}", response_model=schemas.Reserva)
+def updateReserva(reservaId: int, reserva: schemas.reservaCreate, db: Session = Depends(get_db)):
+    try: 
+        return crud.updateReserva(db, reservaId, reserva)
+    except ReservaException as cie:
+        raise HTTPException(**cie.__dict__)
+    
+#delete
+@app.delete("/api/reservas/{reservaId}")
+def deleteReservaById(reservaId: int, db: Session = Depends(get_db)):
+    try:
+        return crud.deleteReservaById(db, reservaId)
+    except ReservaException as cie:
+        raise HTTPException(**cie.__dict__)

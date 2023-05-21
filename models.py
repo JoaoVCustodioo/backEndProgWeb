@@ -2,6 +2,7 @@ from sqlalchemy import Column, Date, Integer, String
 from database import Base
 
 
+
 #models são as classes que representam as tabelas e seus atributos, só que em código 
 
 class Funcionario(Base):
@@ -28,5 +29,13 @@ class Hospede(Base):
     
 
 
-    
+class Reserva(Base):
+    __tablename__ = 'reservas'
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(50))
+    dataCheckIn = Column(Date)
+    dataCheckOut = Column(Date)
+    valor = Column(String(20))
+    requisitos = Column (String(200))
     

@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "hotelBack",
-    "dateExported": "2023-05-22T00:15:04.478Z",
+    "dateExported": "2023-05-22T00:20:46.584Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -42,12 +42,12 @@
             "method": "POST",
             "sortNum": 70000,
             "created": "2023-05-20T02:03:50.976Z",
-            "modified": "2023-05-22T00:03:26.367Z",
+            "modified": "2023-05-22T00:19:49.245Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"jos\",\n  \"dataNascimento\": \"2001-10-10\",\n  \"funcao\": \"chefe\",\n  \"horarioTrabalho\": 8,\n  \"cpf\": \"127\",\n  \"fone\": \"123456789\",\n  \"senha\": \"123456\"\n}",
+                "raw": "{\n  \"nome\": \"joaomiguel\",\n  \"dataNascimento\": \"2001-10-10\",\n  \"funcao\": \"boss\",\n  \"horarioTrabalho\": 4,\n  \"cpf\": \"142745455\",\n  \"fone\": \"1234568789\",\n  \"senha\": \"123456\"\n}",
                 "form": []
             },
             "tests": []
@@ -76,11 +76,11 @@
             "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
             "containerId": "",
             "name": "deleteFuncionario",
-            "url": "http://127.0.0.1:3333/api/funcionarios/2",
+            "url": "http://127.0.0.1:3333/api/funcionarios/0",
             "method": "DELETE",
             "sortNum": 90000,
             "created": "2023-05-20T02:07:50.099Z",
-            "modified": "2023-05-20T02:21:01.072Z",
+            "modified": "2023-05-22T00:18:14.159Z",
             "headers": [],
             "params": [],
             "tests": []

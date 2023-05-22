@@ -39,3 +39,7 @@ class Reserva(Base):
     valor = Column(String(20))
     requisitos = Column (String(200))
     
+    
+    
+    
+    

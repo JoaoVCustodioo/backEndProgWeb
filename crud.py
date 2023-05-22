@@ -31,6 +31,7 @@ def createFuncionario(db:Session, funcionario: schemas.funcionarioCreate):
     return db_funcionario
 
 
+
 #update
 def updateFuncionario(db:Session, funcionarioId: int, funcionario: schemas.funcionarioCreate):
     dbFuncionario = getFuncionarioById(db, funcionarioId)

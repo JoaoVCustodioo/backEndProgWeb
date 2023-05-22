@@ -14,6 +14,7 @@ class funcionarioBase(BaseModel):
     
 class funcionarioCreate(funcionarioBase):
     senha: str
+    pass
     
 class Funcionario(funcionarioBase):
     id: int

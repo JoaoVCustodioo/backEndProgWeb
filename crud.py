@@ -2,6 +2,15 @@ from sqlalchemy.orm import Session
 from exceptions import PessoaAlreadyExistError, PessoaNotFoundError, ReservaAlreadyExistError, ReservaNotFoundError
 import bcrypt, models, schemas
 
+
+def checkFuncionario(db:Session, funcionario: schemas.funcionarioLoginSchema):
+    db_funcionario = db.query( models.Funcionario).filter(models.Funcionario.nome == funcionario.nome).first()
+    if db_funcionario is None:
+        return False
+    return bcrypt.checkpw(funcionario.senha.encode('utf8'), db_funcionario.senha.encode('utf8'))
+
+
+
 #read
 def getFuncionarioById(db:Session, funcionarioId: int):
     db_funcionario = db.query(models.Funcionario).get(funcionarioId)
@@ -142,3 +151,4 @@ def deleteReservaById(db: Session, reservaId: int):
     db.delete(dbReserva)
     db.commit()
     return
+

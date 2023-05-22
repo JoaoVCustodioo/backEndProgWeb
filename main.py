@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from exceptions import PessoaException, ReservaException
 from database import get_db, engine
 import crud, models, schemas
+from auth.auth_handler import signJWT
+from auth.auth_bearer import JWTBearer
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -10,7 +12,7 @@ app = FastAPI()
 
 
 #read
-@app.get("/api/funcionarios/{funcionarioId}", response_model=schemas.Funcionario)
+@app.get("/api/funcionarios/{funcionarioId}", dependencies=[Depends(JWTBearer())], response_model=schemas.Funcionario)
 def getFuncionarioById(funcionarioId: int, db: Session = Depends(get_db)):
     try:
         return crud.getFuncionarioById(db, funcionarioId)
@@ -18,7 +20,7 @@ def getFuncionarioById(funcionarioId: int, db: Session = Depends(get_db)):
         raise HTTPException(**cie.__dict__)
     
 
-@app.get("/api/funcionarios", response_model=schemas.PaginatedFuncionario)
+@app.get("/api/funcionarios", dependencies=[Depends(JWTBearer())], response_model=schemas.PaginatedFuncionario)
 def getAllFuncionarios(db: Session = Depends(get_db), offset:int = 0, limit: int = 10):
     dbFuncionarios = crud.getAllFuncionarios(db, offset, limit)
     response = {"limit": limit, "offset": offset, "data": dbFuncionarios}
@@ -27,7 +29,7 @@ def getAllFuncionarios(db: Session = Depends(get_db), offset:int = 0, limit: int
 
 
 #create
-@app.post("/api/funcionarios", response_model=schemas.Funcionario)
+@app.post("/api/funcionarios", dependencies=[Depends(JWTBearer())], response_model=schemas.Funcionario)
 def createFuncionario(funcionario: schemas.funcionarioCreate, db: Session = Depends(get_db)):
     try:
         return crud.createFuncionario(db, funcionario)
@@ -36,7 +38,7 @@ def createFuncionario(funcionario: schemas.funcionarioCreate, db: Session = Depe
     
     
 #update
-@app.put("/api/funcionarios/{funcionarioId}", response_model=schemas.Funcionario)
+@app.put("/api/funcionarios/{funcionarioId}", dependencies=[Depends(JWTBearer())], response_model=schemas.Funcionario)
 def updateFuncionario(funcionarioId: int, funcionario: schemas.funcionarioCreate, db: Session = Depends(get_db)):
     try: 
         return crud.updateFuncionario(db, funcionarioId, funcionario)
@@ -45,7 +47,7 @@ def updateFuncionario(funcionarioId: int, funcionario: schemas.funcionarioCreate
     
     
 #delete
-@app.delete("/api/funcionarios/{funcionarioId}")
+@app.delete("/api/funcionarios/{funcionarioId}", dependencies=[Depends(JWTBearer())])
 def deleteFuncionarioById(funcionarioId: int, db: Session = Depends(get_db)):
     try:
         return crud.deleteFuncionarioById(db, funcionarioId)
@@ -57,7 +59,7 @@ def deleteFuncionarioById(funcionarioId: int, db: Session = Depends(get_db)):
 
 #endpoint de hospede
 #read
-@app.get("/api/hospedes/{hospedeId}", response_model=schemas.Hospede)
+@app.get("/api/hospedes/{hospedeId}", dependencies=[Depends(JWTBearer())], response_model=schemas.Hospede)
 def getHospedeById(hospedeId: int, db: Session = Depends(get_db)):
     try:
         return crud.getHospedeById(db, hospedeId)
@@ -65,7 +67,7 @@ def getHospedeById(hospedeId: int, db: Session = Depends(get_db)):
         raise HTTPException(**cie.__dict__)
     
 
-@app.get("/api/hospedes", response_model=schemas.paginatedHospede)
+@app.get("/api/hospedes", dependencies=[Depends(JWTBearer())], response_model=schemas.paginatedHospede)
 def getAllHospedes(db: Session = Depends(get_db), offset:int = 0, limit: int = 10):
     dbHospede = crud.getAllHospedes(db, offset, limit)
     response = {"limit": limit, "offset": offset, "data": dbHospede}
@@ -73,7 +75,7 @@ def getAllHospedes(db: Session = Depends(get_db), offset:int = 0, limit: int = 1
 #fim do read
 
 #create
-@app.post("/api/hospedes", response_model=schemas.Hospede)
+@app.post("/api/hospedes", dependencies=[Depends(JWTBearer())], response_model=schemas.Hospede)
 def createHospede(hospede: schemas.hospedeCreate, db: Session = Depends(get_db)):
     try:
         return crud.createHospede(db, hospede)
@@ -81,7 +83,7 @@ def createHospede(hospede: schemas.hospedeCreate, db: Session = Depends(get_db))
         raise HTTPException(**cie.__dict__)
 
 #update
-@app.put("/api/hospedes/{hospedeId}", response_model=schemas.Hospede)
+@app.put("/api/hospedes/{hospedeId}", dependencies=[Depends(JWTBearer())], response_model=schemas.Hospede)
 def updateHospede(hospedeId: int, hospede: schemas.hospedeCreate, db: Session = Depends(get_db)):
     try: 
         return crud.updateHospede(db, hospedeId, hospede)
@@ -89,7 +91,7 @@ def updateHospede(hospedeId: int, hospede: schemas.hospedeCreate, db: Session = 
         raise HTTPException(**cie.__dict__)
     
 #delete
-@app.delete("/api/hospedes/{hospedeId}")
+@app.delete("/api/hospedes/{hospedeId}", dependencies=[Depends(JWTBearer())])
 def deleteHospedeById(hospedeId: int, db: Session = Depends(get_db)):
     try:
         return crud.deleteHospedeById(db, hospedeId)
@@ -99,7 +101,7 @@ def deleteHospedeById(hospedeId: int, db: Session = Depends(get_db)):
     
 #endpoint de reserva
 #read
-@app.get("/api/reservas/{reservaId}", response_model=schemas.Reserva)
+@app.get("/api/reservas/{reservaId}", dependencies=[Depends(JWTBearer())], response_model=schemas.Reserva)
 def getReservaById(reservaId: int, db: Session = Depends(get_db)):
     try:
         return crud.getReservaById(db, reservaId)
@@ -107,7 +109,7 @@ def getReservaById(reservaId: int, db: Session = Depends(get_db)):
         raise HTTPException(**cie.__dict__)
     
 
-@app.get("/api/reservas", response_model=schemas.PaginatedReserva)
+@app.get("/api/reservas", dependencies=[Depends(JWTBearer())], response_model=schemas.PaginatedReserva)
 def getAllReservas(db: Session = Depends(get_db), offset:int = 0, limit: int = 10):
     dbReservas = crud.getAllReservas(db, offset, limit)
     response = {"limit": limit, "offset": offset, "data": dbReservas}
@@ -115,7 +117,7 @@ def getAllReservas(db: Session = Depends(get_db), offset:int = 0, limit: int = 1
 #fim do read
 
 #create
-@app.post("/api/reservas", response_model=schemas.Reserva)
+@app.post("/api/reservas", dependencies=[Depends(JWTBearer())], response_model=schemas.Reserva)
 def createReserva(reserva: schemas.reservaCreate, db: Session = Depends(get_db)):
     try:
         return crud.createReserva(db, reserva)
@@ -124,7 +126,7 @@ def createReserva(reserva: schemas.reservaCreate, db: Session = Depends(get_db))
    
    
 #update
-@app.put("/api/reservas/{reservaId}", response_model=schemas.Reserva)
+@app.put("/api/reservas/{reservaId}", dependencies=[Depends(JWTBearer())], response_model=schemas.Reserva)
 def updateReserva(reservaId: int, reserva: schemas.reservaCreate, db: Session = Depends(get_db)):
     try: 
         return crud.updateReserva(db, reservaId, reserva)
@@ -132,9 +134,30 @@ def updateReserva(reservaId: int, reserva: schemas.reservaCreate, db: Session = 
         raise HTTPException(**cie.__dict__)
     
 #delete
-@app.delete("/api/reservas/{reservaId}")
+@app.delete("/api/reservas/{reservaId}", dependencies=[Depends(JWTBearer())])
 def deleteReservaById(reservaId: int, db: Session = Depends(get_db)):
     try:
         return crud.deleteReservaById(db, reservaId)
     except ReservaException as cie:
         raise HTTPException(**cie.__dict__)
+    
+    
+#signup
+@app.post("/api/signup", tags=["funcionario"])
+async def create_funcionario_signup(funcionario: schemas.funcionarioCreate = Body(...), db: Session = Depends(get_db)):
+    try:
+        crud.createFuncionario(db, funcionario)
+        return signJWT(funcionario.nome)
+    except PessoaException as cie:
+        raise HTTPException(**cie.__dict__)
+    
+    
+#login
+@app.post("/api/login", tags=["funcionario"])
+async def user_login(funcionario: schemas.funcionarioLoginSchema = Body(...), db: Session = Depends(get_db)):
+    if crud.checkFuncionario(db, funcionario):
+        return signJWT(funcionario.nome)
+    return {
+        "error": "E-mail ou senha incorretos!"
+}
+

@@ -65,3 +65,15 @@ class PaginatedReserva(BaseModel):
     limit: int
     offset: int
     data: List[Reserva]
+    
+    
+class funcionarioLoginSchema(BaseModel):
+    nome: str
+    senha: str
+    class Config:
+        schema_extra = {
+            "example": {
+                "nome": "joao",
+                "senha": "pass"
+            }
+        }

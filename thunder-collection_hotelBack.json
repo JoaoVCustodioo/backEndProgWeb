@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "hotelBack",
-    "dateExported": "2023-05-22T00:20:46.584Z",
+    "dateExported": "2023-05-22T21:21:25.219Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -10,13 +10,17 @@
             "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
             "containerId": "",
             "name": "getFuncionarioById",
-            "url": "http://127.0.0.1:3333/api/funcionarios/0",
+            "url": "http://127.0.0.1:3333/api/funcionarios/7",
             "method": "GET",
             "sortNum": 50000,
             "created": "2023-05-20T01:54:37.840Z",
-            "modified": "2023-05-21T22:51:26.417Z",
+            "modified": "2023-05-22T21:18:12.443Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -28,9 +32,13 @@
             "method": "GET",
             "sortNum": 60000,
             "created": "2023-05-20T01:58:32.813Z",
-            "modified": "2023-05-22T00:09:12.459Z",
+            "modified": "2023-05-22T21:10:59.169Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -42,13 +50,17 @@
             "method": "POST",
             "sortNum": 70000,
             "created": "2023-05-20T02:03:50.976Z",
-            "modified": "2023-05-22T00:19:49.245Z",
+            "modified": "2023-05-22T21:17:37.134Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"joaomiguel\",\n  \"dataNascimento\": \"2001-10-10\",\n  \"funcao\": \"boss\",\n  \"horarioTrabalho\": 4,\n  \"cpf\": \"142745455\",\n  \"fone\": \"1234568789\",\n  \"senha\": \"123456\"\n}",
+                "raw": "{\n  \"nome\": \"maria\",\n  \"dataNascimento\": \"2001-10-10\",\n  \"funcao\": \"recepcao\",\n  \"horarioTrabalho\": 2,\n  \"cpf\": \"1427454455\",\n  \"fone\": \"12345688789\",\n  \"senha\": \"123456\"\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
             },
             "tests": []
         },
@@ -61,13 +73,17 @@
             "method": "PUT",
             "sortNum": 80000,
             "created": "2023-05-20T02:06:35.573Z",
-            "modified": "2023-05-21T23:39:42.151Z",
+            "modified": "2023-05-22T21:14:00.533Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
                 "raw": "{\n  \"nome\": \"joao\",\n  \"cpf\": \"1454488448\",\n  \"funcao\": \"hgos\",\n  \"horarioTrabalho\": 4,\n  \"dataNascimento\" : \"2004-11-05\",\n  \"fone\" : \"1554484842222\",\n  \"senha\" : \"12256456\"\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
             },
             "tests": []
         },
@@ -76,13 +92,17 @@
             "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
             "containerId": "",
             "name": "deleteFuncionario",
-            "url": "http://127.0.0.1:3333/api/funcionarios/0",
+            "url": "http://127.0.0.1:3333/api/funcionarios/5",
             "method": "DELETE",
             "sortNum": 90000,
             "created": "2023-05-20T02:07:50.099Z",
-            "modified": "2023-05-22T00:18:14.159Z",
+            "modified": "2023-05-22T21:18:00.724Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -90,13 +110,17 @@
             "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
             "containerId": "",
             "name": "getReservaById",
-            "url": "http://127.0.0.1:3333/api/reservas/",
+            "url": "http://127.0.0.1:3333/api/reservas/5",
             "method": "GET",
             "sortNum": 100000,
             "created": "2023-05-21T22:46:39.476Z",
-            "modified": "2023-05-21T22:50:24.884Z",
+            "modified": "2023-05-22T21:19:50.582Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -108,9 +132,13 @@
             "method": "GET",
             "sortNum": 110000,
             "created": "2023-05-21T22:51:55.832Z",
-            "modified": "2023-05-21T22:52:18.411Z",
+            "modified": "2023-05-22T21:14:45.797Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -122,13 +150,17 @@
             "method": "POST",
             "sortNum": 120000,
             "created": "2023-05-21T22:52:36.257Z",
-            "modified": "2023-05-21T23:59:39.874Z",
+            "modified": "2023-05-22T21:19:31.705Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n\n  \"nome\" : \"reserva4\",\n  \"dataCheckIn\" : \"2023-05-21\",\n  \"dataCheckOut\" : \"2023-05-27\",\n  \"valor\" : \"151\",\n  \"requisitos\" : \"hoje eu quero queijo\"\n}",
+                "raw": "{\n\n  \"nome\" : \"aquela reserva\",\n  \"dataCheckIn\" : \"2023-04-08\",\n  \"dataCheckOut\" : \"2023-05-30\",\n  \"valor\" : \"151185\",\n  \"requisitos\" : \"hoje eu nao quero nada\"\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
             },
             "tests": []
         },
@@ -141,9 +173,13 @@
             "method": "PUT",
             "sortNum": 130000,
             "created": "2023-05-21T22:54:07.000Z",
-            "modified": "2023-05-21T22:54:19.948Z",
+            "modified": "2023-05-22T21:15:12.611Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -151,13 +187,17 @@
             "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
             "containerId": "",
             "name": "deleteReserva",
-            "url": "http://127.0.0.1:3333/api/reservas/1",
+            "url": "http://127.0.0.1:3333/api/reservas/4",
             "method": "DELETE",
             "sortNum": 140000,
             "created": "2023-05-21T22:54:57.636Z",
-            "modified": "2023-05-21T22:55:20.059Z",
+            "modified": "2023-05-22T21:19:56.089Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -169,9 +209,13 @@
             "method": "GET",
             "sortNum": 150000,
             "created": "2023-05-21T22:55:41.168Z",
-            "modified": "2023-05-21T22:56:11.974Z",
+            "modified": "2023-05-22T21:16:43.380Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -183,9 +227,13 @@
             "method": "GET",
             "sortNum": 160000,
             "created": "2023-05-21T22:56:31.378Z",
-            "modified": "2023-05-21T22:56:47.918Z",
+            "modified": "2023-05-22T21:16:38.387Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
             "tests": []
         },
         {
@@ -197,13 +245,17 @@
             "method": "POST",
             "sortNum": 170000,
             "created": "2023-05-21T22:57:01.596Z",
-            "modified": "2023-05-22T00:14:32.495Z",
+            "modified": "2023-05-22T21:20:41.175Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\" : \"miguel111111\",\n  \"cpf\" : \"167891\",\n  \"fone\" : \"12345673\",\n  \"email\" : \"miglel@melddssdgue.com\"\n}",
+                "raw": "{\n  \"nome\" : \"neio\",\n  \"cpf\" : \"16789441\",\n  \"fone\" : \"1234564473\",\n  \"email\" : \"neio@meue.com\"\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
             },
             "tests": []
         },
@@ -216,13 +268,17 @@
             "method": "PUT",
             "sortNum": 180000,
             "created": "2023-05-21T22:57:32.312Z",
-            "modified": "2023-05-21T23:45:33.168Z",
+            "modified": "2023-05-22T21:16:27.663Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
                 "raw": "{\n  \"nome\" : \"melguelll\",\n  \"cpf\" : \"9874662660\",\n  \"fone\" : \"8518185\",\n  \"email\" : \"melguell@melllg.com\"\n\n}",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
             },
             "tests": []
         },
@@ -231,13 +287,55 @@
             "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
             "containerId": "",
             "name": "deleteHospede",
-            "url": "http://127.0.0.1:3333/api/hospedes/1",
+            "url": "http://127.0.0.1:3333/api/hospedes/2",
             "method": "DELETE",
             "sortNum": 190000,
             "created": "2023-05-21T22:58:20.163Z",
-            "modified": "2023-05-21T22:58:32.314Z",
+            "modified": "2023-05-22T21:21:02.410Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c5ddbfd3-1b96-44da-b1c5-7ce4afc6c10e",
+            "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
+            "containerId": "",
+            "name": "SignUpPost",
+            "url": "http://127.0.0.1:3333/api/signup",
+            "method": "POST",
+            "sortNum": 200000,
+            "created": "2023-05-22T21:01:44.996Z",
+            "modified": "2023-05-22T21:03:04.315Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"nome\": \"joao\",\r\n  \"funcao\": \"chefe\",\r\n  \"horarioTrabalho\": 8,\r\n  \"cpf\": \"123456789\",\r\n  \"dataNascimento\": \"2023-05-22\",\r\n  \"fone\": \"51511515\",\r\n  \"senha\": \"123456\"\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2dcc1095-3246-4778-ba22-b9a6254db428",
+            "colId": "9dbc4c89-8c23-4103-9df8-35d2524ea017",
+            "containerId": "",
+            "name": "LoginPost",
+            "url": "http://127.0.0.1:3333/api/login",
+            "method": "POST",
+            "sortNum": 220000,
+            "created": "2023-05-22T21:03:33.510Z",
+            "modified": "2023-05-22T21:18:30.229Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"joao\",\n  \"senha\": \"123456\"\n}",
+                "form": []
+            },
             "tests": []
         }
     ]
